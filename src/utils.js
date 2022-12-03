@@ -2,7 +2,6 @@ import fs from "fs";
 import symbol from "log-symbols";
 import chalk from "chalk";
 import ora from "ora";
-
 import download from "download-git-repo";
 
 const util = require('util');
