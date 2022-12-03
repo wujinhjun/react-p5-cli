@@ -31,7 +31,7 @@ export const downloadRepo = async (remoteRepo, projectName) => {
 
 export const loadCmd = (path) => async (cmd, text) => {
     const loading = ora();
-    loading.start(`${text} ing. Please wait a moment`);
+    loading.start(`${text}. Please wait a moment`);
     await exec(cmd, { cwd: path });
     loading.succeed(`${text} succeed`);
 }

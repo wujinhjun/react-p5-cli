@@ -31,8 +31,8 @@ const init = async appName => {
         if (_os2.default.platform() === "win32") {
             initGit = `git init`;
         }
-        await loadCmdCur(initGit, 'init git');
-        await loadCmdCur(`npm install`, 'installing packaging');
+        await loadCmdCur(initGit, 'init git repository');
+        await loadCmdCur(`npm install`, 'installing packages');
     } catch (err) {
         console.log(_logSymbols2.default.error, _chalk2.default.red(`Init failed`));
         console.log(_logSymbols2.default.error, err);
