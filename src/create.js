@@ -1,3 +1,4 @@
+import { join } from "path";
 import chalk from "chalk";
 import ora from "ora";
 
@@ -7,7 +8,7 @@ import { existFolder, downloadRepo } from "./utils"
 
 const create = async (projectName = "p5-react") => {
     existFolder(projectName).then(() => {
-        console.log(`Creating a new app in ${process.cwd()}\\${projectName}\n`);
+        console.log(`Creating a new app in ${join(process.cwd(), projectName)}`);
         const remote = "direct:https://github.com/wujinhjun/react-p5-scaffold.git#main"
         const loading = ora("downloading");
         loading.start();
@@ -24,7 +25,7 @@ const create = async (projectName = "p5-react") => {
                 return init(projectName);
             }).then(() => {
                 console.log();
-                console.log(`Success! Created ${projectName} at ${process.cwd()}\\${projectName}`);
+                console.log(`Success! Created ${projectName} at ${join(process.cwd(), projectName)}`);
                 console.log("I suggest that you begin by typing:");
                 console.log();
                 console.log(chalk.blueBright(`\tcd ${projectName}`));

@@ -1,6 +1,7 @@
+import { join } from 'path';
+import os from "os";
 import symbol from 'log-symbols';
 import chalk from 'chalk';
-import { join } from 'path';
 
 import { loadCmd } from "./utils"
 
@@ -9,7 +10,11 @@ const init = async (appName) => {
     const loadCmdCur = loadCmd(appPath);
 
     try {
-        await loadCmdCur(`rm -rf ./.git && git init`, 'init git');
+        let initGit = `rm -rf ./.git && git init`;
+        if (os.platform() === "win32") {
+            initGit = `git init`;
+        }
+        await loadCmdCur(initGit, 'init git');
         await loadCmdCur(`npm install`, 'installing packaging');
     } catch (err) {
         console.log(symbol.error, chalk.red(`Init failed`));
