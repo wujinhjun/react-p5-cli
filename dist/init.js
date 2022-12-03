@@ -24,8 +24,6 @@ const init = async appName => {
 
     try {
         await loadCmdCur(`rm -rf ./.git && git init`, 'init git');
-        // await loadCmdCur(``);
-        // await loadCmd(`git init`, appPath)
         await loadCmdCur(`npm install`, 'installing packaging');
     } catch (err) {
         console.log(_logSymbols2.default.error, _chalk2.default.red(`Init failed`));

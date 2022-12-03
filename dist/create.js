@@ -29,18 +29,20 @@ const create = async (projectName = "p5-react") => {
         (0, _utils.downloadRepo)(remote, projectName).then(() => {
             loading.succeed(_chalk2.default.green("download template successful"));
             console.log();
-            // console.log("I suggest that you begin by typing:");
-            // console.log();
-            // console.log(chalk.blueBright(`\tcd ${projectName}`));
-            // console.log(chalk.blueBright(`\tr-p5 init`));
-            // console.log(chalk.blueBright(`\tnpm run start`));
-            // console.log();
-            // console.log("Happy creative coding!");
         }, err => {
             console.log(err);
             loading.fail("failed");
         }).then(() => {
-            (0, _init2.default)(projectName);
+            return (0, _init2.default)(projectName);
+        }).then(() => {
+            console.log();
+            console.log(`Success! Created ${projectName} at ${process.cwd()}\\${projectName}`);
+            console.log("I suggest that you begin by typing:");
+            console.log();
+            console.log(_chalk2.default.blueBright(`\tcd ${projectName}`));
+            console.log(_chalk2.default.blueBright(`\tnpm run start`));
+            console.log();
+            console.log("Happy creative coding!");
         });
     });
 };
