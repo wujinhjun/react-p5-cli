@@ -11,7 +11,7 @@ const actions = {
     create: {
         description: "create a new project",
         usages: [
-            "r-p5 create your-project-name"
+            "r-p5 create project-name"
         ],
         alias: 'c',
     }

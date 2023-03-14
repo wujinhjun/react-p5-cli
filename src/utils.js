@@ -19,7 +19,7 @@ export const existFolder = async (name) => {
 
 export const downloadRepo = async (remoteRepo, projectName) => {
     return new Promise((resolve, reject) => {
-        download(remoteRepo, projectName, { clone: true }, (err) => {
+        download(`direct:${remoteRepo}`, projectName, (err) => {
             if (err) {
                 reject(err);
             } else {
