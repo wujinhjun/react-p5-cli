@@ -1,6 +1,6 @@
 {
   "name": "react-p5-cli",
-  "version": "1.0.3-alpha",
+  "version": "1.0.6-alpha",
   "description": "A cli for p5js and react",
   "homepage": "https://github.com/wujinhjun/react-p5-cli",
   "bugs": "https://github.com/wujinhjun/react-p5-cli/issues",
@@ -9,6 +9,10 @@
     "url": "git@github.com:wujinhjun/react-p5-cli.git"
   },
   "main": "index.js",
+  "files": [
+    "./out",
+    "./bin"
+  ],
   "scripts": {
     "test": "jest",
     "compile": "babel src -d dist",
