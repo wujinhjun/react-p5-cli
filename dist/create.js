@@ -25,7 +25,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const create = async (projectName = "p5-react") => {
     (0, _utils.existFolder)(projectName).then(() => {
         console.log(`Creating a new app in ${(0, _path.join)(process.cwd(), projectName)}`);
-        const remote = "direct:https://github.com/wujinhjun/react-p5-scaffold.git#main";
+        const remote = "https://github.com/wujinhjun/react-p5-scaffold.git#main";
         const loading = (0, _ora2.default)("downloading");
         loading.start();
         (0, _utils.downloadRepo)(remote, projectName).then(() => {
@@ -34,6 +34,7 @@ const create = async (projectName = "p5-react") => {
         }, err => {
             console.log(err);
             loading.fail("failed");
+            return Promise.reject(err);
         }).then(() => {
             return (0, _init2.default)(projectName);
         }).then(() => {
@@ -45,6 +46,8 @@ const create = async (projectName = "p5-react") => {
             console.log(_chalk2.default.blueBright(`\tnpm run start`));
             console.log();
             console.log("Happy creative coding!");
+        }).catch(err => {
+            return Promise.reject(err);
         });
     });
 };

@@ -23,7 +23,7 @@ const program = new _commander.Command();
 const actions = {
     create: {
         description: "create a new project",
-        usages: ["r-p5 create your-project-name"],
+        usages: ["r-p5 create project-name"],
         alias: 'c'
     }
 };
