@@ -1,2 +1,5 @@
 *.tgz
 /src
+package.json
+package-lock.json
+README.mnd
