@@ -17,7 +17,7 @@
     "test": "jest",
     "compile": "babel src -d dist",
     "watch": "npm run compile -- --watch",
-    "build": "node build.js"
+    "build": "tsc && node build.js"
   },
   "bin": {
     "r-p5": "./bin/cmd",
