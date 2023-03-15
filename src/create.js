@@ -42,6 +42,11 @@ const create = async (projectName = "p5-react") => {
             .catch((err) => {
                 return Promise.reject(err);
             })
+    }).catch(() => {
+        console.log(
+            symbol.error,
+            chalk.red(`${join(process.cwd(), projectName)} folder exists in the current directory`)
+        );
     })
 }
 
