@@ -68,12 +68,6 @@ export const loadCommand = async (
         spinner.succeed();
         resolve(0);
       });
-
-      load.once("error", () => {
-        spinner.text = chalk.red(`${text} failed`);
-        spinner.fail();
-        reject(1);
-      });
     }
   });
 };

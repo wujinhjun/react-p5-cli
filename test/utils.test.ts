@@ -26,9 +26,9 @@ describe("test utils", () => {
   test("test the spawn succeed", async () => {
     const testPath = path.join(process.cwd(), "folderForTest", "spawn1");
     await expect(
-      loadCommand(testPath, "git", "initializing the git repository", ["init"])
+      loadCommand(testPath, "npm", "npm installing dependencies", ["install"])
     ).resolves.toBe(0);
-  }, 25000);
+  }, 50000);
 
   test("test the spawn failed", async () => {
     const testPath = path.join(process.cwd(), "folderForTest", "spawn2");
@@ -36,4 +36,11 @@ describe("test utils", () => {
       loadCommand(testPath, "npm", "npm installing dependencies", ["install"])
     ).rejects.toBe(2);
   }, 15000);
+
+  test("test the spawn failed because error package", async () => {
+    const testPath = path.join(process.cwd(), "folderForTest", "spawn3");
+    await expect(
+      loadCommand(testPath, "npm", "npm installing dependencies", ["install"])
+    ).rejects.toBe(1);
+  }, 50000);
 });
