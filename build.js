@@ -1,9 +1,18 @@
-const esbuild = require('esbuild');
+const { build } = require('esbuild');
 
-const options = {
-    entryPoints: ["src/index.js"],
-    outfile: "dist/scode-tool.js",
-    bundle: true,
+async function runBuild() {
+    const result = await build({
+        entryPoints: ["src/main.js"],
+        outfile: "out/main.js",
+        bundle: true,
+        platform: "node",
+        format: "cjs",
+        minify: true,
+        write: true,
+        external: ["electron"]
+    })
+
+    console.log(result);
 };
 
-esbuild.buildSync(options);
+runBuild();

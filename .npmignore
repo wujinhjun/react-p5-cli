@@ -1,2 +1,6 @@
 *.tgz
 /src
+./package.json
+./package-lock.json
+./README.md
+./build.js

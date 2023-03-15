@@ -3,6 +3,7 @@ import chalk from "chalk";
 import ora from "ora";
 
 import init from "./init";
+import installDep from "./installDep";
 
 import { existFolder, downloadRepo } from "./utils"
 
@@ -24,12 +25,16 @@ const create = async (projectName = "p5-react") => {
             .then(() => {
                 return init(projectName);
             })
+            // .then(() => {
+            //     return installDep(projectName);
+            // })
             .then(() => {
                 console.log();
                 console.log(`Success! Created ${projectName} at ${join(process.cwd(), projectName)}`);
                 console.log("I suggest that you begin by typing:");
                 console.log();
                 console.log(chalk.blueBright(`\tcd ${projectName}`));
+                console.log(chalk.blueBright(`\tnpm install`));
                 console.log(chalk.blueBright(`\tnpm run start`));
                 console.log();
                 console.log("Happy creative coding!");

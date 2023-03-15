@@ -1,6 +1,6 @@
 {
   "name": "react-p5-cli",
-  "version": "1.0.3-alpha",
+  "version": "1.0.6-alpha",
   "description": "A cli for p5js and react",
   "homepage": "https://github.com/wujinhjun/react-p5-cli",
   "bugs": "https://github.com/wujinhjun/react-p5-cli/issues",
@@ -9,11 +9,15 @@
     "url": "git@github.com:wujinhjun/react-p5-cli.git"
   },
   "main": "index.js",
+  "files": [
+    "./out",
+    "./bin"
+  ],
   "scripts": {
     "test": "jest",
     "compile": "babel src -d dist",
     "watch": "npm run compile -- --watch",
-    "build": "node build.js"
+    "build": "tsc && node build.js"
   },
   "bin": {
     "r-p5": "./bin/cmd",
@@ -38,7 +42,10 @@
     "ora": "^5.4.1"
   },
   "devDependencies": {
+    "@types/cross-spawn": "^6.0.2",
+    "@types/node": "^18.15.3",
     "babel-cli": "^6.26.0",
+    "cross-spawn": "^7.0.3",
     "esbuild": "^0.17.11",
     "jest": "^29.5.0"
   }
