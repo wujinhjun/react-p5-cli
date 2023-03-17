@@ -1,6 +1,5 @@
 import { join } from "path";
-import * as chalk from "chalk";
-
+import chalk from "chalk";
 import { existFolder, downloadRepo, loadCommand } from "./utils";
 
 const congratulation = (projectName: string, projectPath: string): number => {

@@ -1,7 +1,6 @@
 import { describe, expect, test } from "@jest/globals";
 import { existFolder, downloadRepo, loadCommand } from "../src/utils";
 import * as path from "path";
-// const existFolder = require("../src/utils");
 
 describe("test utils", () => {
   test("test existFolder when the folder existed", async () => {
