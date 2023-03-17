@@ -5,7 +5,7 @@ import * as path from "path";
 
 describe("test utils", () => {
   test("test existFolder when the folder existed", async () => {
-    await expect(existFolder("test")).rejects.toBe(1);
+    await expect(existFolder("test")).rejects.toThrowError("folder existed");
   });
 
   test("test existFolder when the folder unexisted", async () => {
@@ -14,7 +14,9 @@ describe("test utils", () => {
 
   test("test download function false git repo", async () => {
     const repo = "https://github.com/wujinhjun/react-p5-scaff.git#main";
-    await expect(downloadRepo(repo, "p5")).rejects.toBe(1);
+    await expect(downloadRepo(repo, "p5")).rejects.toThrowError(
+      "download failed"
+    );
   });
 
   test("test download function true git repo", async () => {
@@ -34,13 +36,13 @@ describe("test utils", () => {
     const testPath = path.join(process.cwd(), "folderForTest", "spawn2");
     await expect(
       loadCommand(testPath, "npm", "npm installing dependencies", ["install"])
-    ).rejects.toBe(2);
+    ).rejects.toThrowError("no package.json");
   }, 15000);
 
   test("test the spawn failed because error package", async () => {
     const testPath = path.join(process.cwd(), "folderForTest", "spawn3");
     await expect(
       loadCommand(testPath, "npm", "npm installing dependencies", ["install"])
-    ).rejects.toBe(1);
+    ).rejects.toThrowError("failed installing");
   }, 50000);
 });
