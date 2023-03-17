@@ -21,8 +21,8 @@
     "build:tsc": "tsc --build",
     "lint": "eslint src/**/*.{js,jsx,ts,tsx,json}",
     "lint:fix": "eslint --fix src/**/*.{js,jsx,ts,tsx,json}",
-    "build": "rollup -c",
-    "dev": "rollup -c -w"
+    "build": "cross-env NODE_ENV=production rollup -c",
+    "dev": "cross-env NODE_ENV=development rollup -c -w"
   },
   "bin": {
     "r-p5": "./bin/cmd",
