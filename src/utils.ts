@@ -1,9 +1,11 @@
 import * as fs from "fs";
 import * as path from "path";
-import * as chalk from "chalk";
-import * as ora from "ora";
-import * as spawn from "cross-spawn";
-import * as download from "download-git-repo";
+// import { blueBright, red, bgRed, green } from "chalk";
+import chalk from "chalk";
+import ora from "ora";
+// import { Ora } from "ora";
+import spawn from "cross-spawn";
+import download from "download-git-repo";
 
 export const existFolder = async (name: string) => {
   const appPath = path.join(process.cwd(), name);
@@ -78,7 +80,7 @@ export const loadCommand = async (
         if (code !== 0) {
           spinner.text = chalk.red(`${text} failed`);
           spinner.fail();
-          reject("failed installing");
+          reject(new Error("failed installing"));
         }
 
         spinner.text = chalk.green(`${text} succeed`);

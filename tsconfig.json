@@ -1,19 +1,17 @@
 {
   "compilerOptions": {
-    "target": "ES5",
-    "useDefineForClassFields": true,
-    "lib": ["DOM", "DOM.Iterable", "ESNext", "ES6"],
-    "allowJs": false,
-    "skipLibCheck": true,
-    "esModuleInterop": false,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
+    "rootDir": "./",
+    "types": ["node"],
+    "target": "ESNext",
     "module": "ESNext",
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "pretty": true,
     "moduleResolution": "Node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true
+    "typeRoots": ["./node_modules/@types/", "./src/types/"]
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["dist", "test"]
 }
