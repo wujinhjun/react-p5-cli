@@ -3,3 +3,5 @@
 *.tgz
 /out
 /coverage
+/folderForTest
+test1
