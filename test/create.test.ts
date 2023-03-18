@@ -4,7 +4,7 @@ import * as path from "path";
 import rimraf from "rimraf";
 
 describe("test create", () => {
-  const pathTest = path.join(process.cwd(), "test1");
+  const pathTest = path.join(process.cwd(), "folderForTest", "test1");
   beforeAll(() => {
     rimraf(pathTest);
   });
@@ -15,16 +15,18 @@ describe("test create", () => {
 
   test("test create when the remote is false", async () => {
     await expect(
-      create("test1", "https://github.com/wujinhjun/react-p5")
+      create("test2", "https://github.com/wujinhjun/react-p")
     ).rejects.toThrow("download failed");
   });
 
   test("test create truly", async () => {
     await expect(
-      create("test1", "https://github.com/wujinhjun/react-p5-scaffold.git#main")
+      create(
+        path.join("folderForTest", "test1"),
+        "https://github.com/wujinhjun/react-p5-scaffold.git#main"
+      )
     ).resolves.toBe(0);
-    rimraf(path.join(process.cwd(), "test1"));
-  }, 50000);
+  }, 80000);
 
   afterAll(() => {
     rimraf(pathTest);
