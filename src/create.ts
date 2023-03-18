@@ -30,7 +30,7 @@ const create = async (
       "git will initializing the repository",
       ["init"]
     );
-    await loadCommand(projectPath, "npm", "npm installing dependencies", [
+    await loadCommand(projectPath, "pnpm", "pnpm installing dependencies", [
       "install",
     ]);
     return congratulation(projectName, projectPath);

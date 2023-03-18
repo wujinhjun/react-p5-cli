@@ -5,6 +5,7 @@ import rimraf from "rimraf";
 
 describe("test create", () => {
   const pathTest = path.join(process.cwd(), "test1");
+
   beforeAll(() => {
     rimraf(pathTest);
   });
