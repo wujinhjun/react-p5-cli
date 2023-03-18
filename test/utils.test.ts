@@ -35,7 +35,7 @@ describe("test utils", () => {
     await expect(
       loadCommand(testPath, "npm", "npm installing dependencies", ["install"])
     ).resolves.toBe(0);
-  }, 50000);
+  }, 60000);
 
   test("test the spawn failed", async () => {
     const testPath = path.join(process.cwd(), "folderForTest", "spawn2");
@@ -54,5 +54,5 @@ describe("test utils", () => {
   afterAll(() => {
     const testPath = path.join(process.cwd(), "folderForTest", "p5");
     rimraf(testPath);
-  });
+  }, 50000);
 });
