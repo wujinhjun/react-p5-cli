@@ -1,7 +1,6 @@
 /node_modules
-# /dist
 *.tgz
 /out
 /coverage
-/folderForTest/spawn1/node_modules
 test1
+/folderForTest/spawn/node_modules
