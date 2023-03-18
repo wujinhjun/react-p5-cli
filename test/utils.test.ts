@@ -52,7 +52,7 @@ describe("test utils", () => {
   }, 50000);
 
   afterAll(() => {
-    const testPath = path.join(process.cwd(), "folderForTest", "p5");
-    rimraf(testPath);
+    const testP5Path = path.join(process.cwd(), "folderForTest", "p5");
+    rimraf(testP5Path);
   }, 50000);
 });
