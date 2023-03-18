@@ -3,5 +3,5 @@
 *.tgz
 /out
 /coverage
-/folderForTest
+/folderForTest/spawn1/node_modules
 test1

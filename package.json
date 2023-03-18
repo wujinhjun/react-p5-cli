@@ -14,7 +14,7 @@
     "./dist"
   ],
   "scripts": {
-    "test": "jest",
+    "test": "jest --silent --coverage",
     "test:cover": "jest --coverage",
     "compile": "babel src -d dist",
     "watch": "npm run compile -- --watch",
