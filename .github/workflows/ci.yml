@@ -37,7 +37,7 @@ jobs:
         run: pnpm install
 
       - name: running test
-        run: pnpm test
+        run: pnpm run test
 
   # publish-npm:
   #   needs: build

@@ -1,11 +1,15 @@
 import * as fs from "fs";
 import * as path from "path";
-// import { blueBright, red, bgRed, green } from "chalk";
 import chalk from "chalk";
 import ora from "ora";
-// import { Ora } from "ora";
 import spawn from "cross-spawn";
 import download from "download-git-repo";
+import {
+  FOLDER_EXISTED,
+  DOWNLOAD_FAILED,
+  MISSING_FILE,
+  EXECUTED_FAILED,
+} from "./errorMessage";
 
 export const existFolder = async (name: string) => {
   const appPath = path.join(process.cwd(), name);
@@ -20,7 +24,7 @@ export const existFolder = async (name: string) => {
         `the folder ${name} existed in the ${appPath}`
       );
       spinner.fail();
-      reject(new Error("folder existed"));
+      reject(new Error(FOLDER_EXISTED));
     } else {
       spinner.succeed();
       resolve(0);
@@ -44,7 +48,7 @@ export const downloadRepo = async (remoteRepo: string, projectName: string) => {
           console.log(err);
           spinner.text = "Download template failed";
           spinner.fail();
-          reject(new Error("download failed"));
+          reject(new Error(DOWNLOAD_FAILED));
         } else {
           spinner.text = "Download template successful";
           spinner.succeed();
@@ -69,7 +73,7 @@ export const loadCommand = async (
     if (!fs.existsSync(path.join(name, "package.json"))) {
       spinner.text = chalk.red(`${text} failed`);
       spinner.fail();
-      reject(new Error("no package.json"));
+      reject(new Error(MISSING_FILE));
     } else {
       const load = spawn(command, options ?? [], {
         cwd: name,
@@ -80,7 +84,7 @@ export const loadCommand = async (
         if (code !== 0) {
           spinner.text = chalk.red(`${text} failed`);
           spinner.fail();
-          reject(new Error("failed installing"));
+          reject(new Error(EXECUTED_FAILED));
         }
 
         spinner.text = chalk.green(`${text} succeed`);

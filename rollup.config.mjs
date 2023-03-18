@@ -24,17 +24,25 @@ export default {
   },
 
   plugins: [
-    // 打包插件
+    // clear the out time output files
     cleandir("./dist"),
+    // transform the json to es6
     json(),
+    // transform the typescript to es6
     typescript(),
+    // use babel to compile the es6
     babel({
       babelHelpers: "bundled",
     }),
+    // find my node dependencies
     nodeResolve({ preferBuiltins: true }),
+    // external the dev dependencies
     externals({ devDeps: false }),
+    // find the modules were write by commonjs
     commonjs(),
+    // use esbuild to package
     esbuild(),
+    // use terser to compression when we build production
     isProduction && terser(),
   ],
 };

@@ -1,8 +1,14 @@
-import { describe, expect, test } from "@jest/globals";
+import { afterAll, beforeAll, describe, expect, test } from "@jest/globals";
 import { existFolder, downloadRepo, loadCommand } from "../src/utils";
 import * as path from "path";
+import rimraf from "rimraf";
 
 describe("test utils", () => {
+  beforeAll(() => {
+    const testPath = path.join(process.cwd(), "folderForTest", "p5");
+    rimraf(testPath);
+  });
+
   test("test existFolder when the folder existed", async () => {
     await expect(existFolder("test")).rejects.toThrowError("folder existed");
   });
@@ -42,6 +48,11 @@ describe("test utils", () => {
     const testPath = path.join(process.cwd(), "folderForTest", "spawn3");
     await expect(
       loadCommand(testPath, "npm", "npm installing dependencies", ["install"])
-    ).rejects.toThrowError("failed installing");
+    ).rejects.toThrowError("executed failed");
+  }, 50000);
+
+  afterAll(() => {
+    const testP5Path = path.join(process.cwd(), "folderForTest", "p5");
+    rimraf(testP5Path);
   }, 50000);
 });
