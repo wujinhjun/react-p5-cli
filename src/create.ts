@@ -48,6 +48,8 @@ const create = async (
         `${errMessage}`
       )}, \n${chalk.redBright("See above for more details.")}`
     );
+
+    throw new Error(errMessage);
   }
 };
 
