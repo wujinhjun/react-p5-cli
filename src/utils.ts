@@ -36,7 +36,7 @@ export const downloadRepo = async (remoteRepo: string, projectName: string) => {
   return new Promise((resolve, reject) => {
     const spinner = ora();
     spinner.text = chalk.blueBright(
-      `We will download the template from github`
+      `We will download the template from github\n`
     );
     spinner.start();
     download(
@@ -46,11 +46,11 @@ export const downloadRepo = async (remoteRepo: string, projectName: string) => {
       (err: Error) => {
         if (err) {
           console.log(err);
-          spinner.text = "Download template failed";
+          spinner.text = "Download template failed\n";
           spinner.fail();
           reject(new Error(DOWNLOAD_FAILED));
         } else {
-          spinner.text = "Download template successful";
+          spinner.text = "Download template successful\n";
           spinner.succeed();
           resolve(0);
         }
@@ -66,7 +66,7 @@ export const loadCommand = async (
   options?: string[]
 ) => {
   const spinner = ora();
-  spinner.text = chalk.blueBright(`${text}, please wait a moment`);
+  spinner.text = chalk.blueBright(`${text}, please wait a moment\n`);
   spinner.start();
 
   return new Promise((resolve, reject) => {

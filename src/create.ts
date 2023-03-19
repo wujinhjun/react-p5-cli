@@ -8,8 +8,8 @@ const congratulation = (projectName: string, projectPath: string): number => {
   console.log("I suggest that you begin by typing:");
   console.log();
   console.log(chalk.blueBright(`\tcd ${projectName}`));
-  console.log(chalk.blueBright(`\tnpm install`));
-  console.log(chalk.blueBright(`\tnpm run start`));
+  console.log(chalk.blueBright(`\tpnpm install`));
+  console.log(chalk.blueBright(`\tpnpm run start`));
   console.log();
   console.log("Happy creative coding!");
   return 0;
@@ -44,12 +44,10 @@ const create = async (
     }
 
     console.log(
-      `${chalk.bgRedBright("create failed")}: ${chalk.redBright(
-        "See above for more details."
-      )}`
+      `${chalk.bgRedBright(`create failed: `)} ${chalk.red(
+        `${errMessage}`
+      )}, \n${chalk.redBright("See above for more details.")}`
     );
-
-    throw new Error(errMessage);
   }
 };
 
