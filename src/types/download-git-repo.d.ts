@@ -7,7 +7,7 @@ declare module "download-git-repo" {
   function download(
     direct: string,
     dest: string,
-    options: download.Options,
+    options: object,
     callback: (err: Error) => void
   ): void;
   export = download;

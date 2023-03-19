@@ -1,6 +1,6 @@
 {
   "name": "react-p5-cli",
-  "version": "1.0.7",
+  "version": "1.1.0",
   "description": "A cli for p5js and react",
   "homepage": "https://github.com/wujinhjun/react-p5-cli",
   "bugs": "https://github.com/wujinhjun/react-p5-cli/issues",

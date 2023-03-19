@@ -16,16 +16,17 @@ export const existFolder = async (name: string) => {
   return new Promise((resolve, reject) => {
     const spinner = ora();
     spinner.text = chalk.blueBright(
-      `We will create a folder called ${name} in ${appPath}, please wait a moment`
+      `We will create a folder called ${name} in ${appPath}, please wait a moment\n`
     );
     spinner.start();
     if (fs.existsSync(appPath)) {
-      spinner.text = chalk.bgRed(
-        `the folder ${name} existed in the ${appPath}`
-      );
+      spinner.text = chalk.red(`the folder ${name} existed in the ${appPath}`);
       spinner.fail();
       reject(new Error(FOLDER_EXISTED));
     } else {
+      spinner.text = chalk.green(
+        `the folder ${name} was created in the ${appPath}`
+      );
       spinner.succeed();
       resolve(0);
     }
@@ -36,7 +37,7 @@ export const downloadRepo = async (remoteRepo: string, projectName: string) => {
   return new Promise((resolve, reject) => {
     const spinner = ora();
     spinner.text = chalk.blueBright(
-      `We will download the template from github`
+      `We will download the template from github\n`
     );
     spinner.start();
     download(
@@ -46,11 +47,11 @@ export const downloadRepo = async (remoteRepo: string, projectName: string) => {
       (err: Error) => {
         if (err) {
           console.log(err);
-          spinner.text = "Download template failed";
+          spinner.text = chalk.red("Download template failed\n");
           spinner.fail();
           reject(new Error(DOWNLOAD_FAILED));
         } else {
-          spinner.text = "Download template successful";
+          spinner.text = chalk.green("Download template successful\n");
           spinner.succeed();
           resolve(0);
         }
@@ -66,7 +67,7 @@ export const loadCommand = async (
   options?: string[]
 ) => {
   const spinner = ora();
-  spinner.text = chalk.blueBright(`${text}, please wait a moment`);
+  spinner.text = chalk.blueBright(`${text}, please wait a moment\n`);
   spinner.start();
 
   return new Promise((resolve, reject) => {
@@ -80,7 +81,7 @@ export const loadCommand = async (
         stdio: "inherit",
       });
 
-      load.once("close", (code) => {
+      load.on("close", (code) => {
         if (code !== 0) {
           spinner.text = chalk.red(`${text} failed`);
           spinner.fail();
@@ -90,6 +91,12 @@ export const loadCommand = async (
         spinner.text = chalk.green(`${text} succeed`);
         spinner.succeed();
         resolve(0);
+      });
+
+      load.once("error", () => {
+        spinner.text = chalk.red(`${text} failed`);
+        spinner.fail();
+        reject(new Error(EXECUTED_FAILED));
       });
     }
   });
